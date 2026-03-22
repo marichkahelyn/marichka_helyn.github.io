@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VibeTravel | Гарячі тури</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <div class="main-bg">
+      <header class="header">
+        <div class="logo">
+          <div class="logo-box">
+            VibeTravel
+            <span>Best Prices, Best Holidays</span>
+          </div>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html" class="active">Гарячі тури</a></li>
+            <li><a href="bookings.html">Мої бронювання</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="content">
+        <section class="banner">
+          <div class="border-box">
+            <h2>ПОПУЛЯРНІ МІСЦЯ</h2>
+          </div>
+        </section>
+
+        <section class="map-section">
+          <div id="tour-map" class="interactive-map">
+            <div id="map-tooltip" class="map-tooltip" style="display: none">
+              <img
+                id="tooltip-img"
+                src=""
+                alt="Travel"
+                style="
+                  width: 100%;
+                  border-radius: 10px;
+                  margin-bottom: 10px;
+                  display: none;
+                "
+              />
+
+              <h4 id="tooltip-title">Оберіть місце</h4>
+              <p id="tooltip-desc">
+                Натисніть на маркер на мапі, щоб дізнатися деталі подорожі
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="banner">
+          <div class="border-box">
+            <h2>ГАРЯЧІ ТУРИ</h2>
+          </div>
+        </section>
+
+        <section class="tour-section">
+          <div class="tour-box" id="tour-list"></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="f-content">
+          <div class="f-links">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Telegram</a>
+          </div>
+          <div class="f-divider"></div>
+          <p>© 2026 VibeTravel Agency</p>
+          <p class="f-txt">Робимо ваш відпочинок незабутнім</p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
