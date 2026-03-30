@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/LR3/',  // ← просто назва папки
+  base: '/marichka_helyn.github.io/LR3/',  // ← просто назва папки
 })
