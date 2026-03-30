@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react'; 
 import HotTours from './components/HotTours';
 import BookingList from './components/BookingList';
@@ -6,28 +6,19 @@ import ContactPage from './components/ContactPage';
 import './App.css';
 
 function App() {
-  // Стан для завантажених турів (спочатку порожній масив)
   const [tours, setTours] = useState([]);
   const [booked, setBooked] = useState([]);
   const [bookedIds, setBookedIds] = useState([]); 
 
-  // --- ЛОГІКА FETCH (Зауваження №2) ---
   useEffect(() => {
-    // Fetch звертається до папки public автоматично
-    fetch('/tours.json') 
+    fetch(`${import.meta.env.BASE_URL}tours.json`)  // ← виправлено
       .then((response) => {
-        if (!response.ok) {
-          throw new Error('Помилка при завантаженні даних');
-        }
+        if (!response.ok) throw new Error('Помилка при завантаженні даних');
         return response.json();
       })
-      .then((data) => {
-        setTours(data); // Записуємо дані у стан
-      })
-      .catch((error) => {
-        console.error("Помилка:", error);
-      });
-  }, []); // Порожній масив залежностей = запит виконується 1 раз при старті
+      .then((data) => setTours(data))
+      .catch((error) => console.error("Помилка:", error));
+  }, []);
 
   const handleBooking = (tour) => {
     if (!bookedIds.includes(tour.id)) {
