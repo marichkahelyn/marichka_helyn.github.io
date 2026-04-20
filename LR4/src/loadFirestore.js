@@ -1,0 +1,157 @@
+import { db } from './firebase';
+import { collection, doc, setDoc } from 'firebase/firestore';
+
+
+const tours = [
+  {
+    "id": "BV-8842",
+    "title": "Мальдіви, Острів Мале",
+    "price": 649,
+    "img": "images/Maldives.webp",
+    "hotel": "Le Mas de l'Hôtel",
+    "departure": "12 травня 2026"
+  },
+  {
+    "id": "BV-9015",
+    "title": "Париж, Франція",
+    "price": 449,
+    "img": "images/Paris.webp",
+    "hotel": "The Manhattan Heights",
+    "departure": "20 червня 2026"
+  },
+  {
+    "id": "BV-1011",
+    "title": "Стамбул, Туреччина",
+    "price": 380,
+    "img": "images/Turkey.webp",
+    "hotel": "Bosphorus Luxury Inn",
+    "departure": "20 травня 2026"
+  },
+  {
+    "id": "BV-1122",
+    "title": "Рим, Італія",
+    "price": 520,
+    "img": "images/Rome.webp",
+    "hotel": "Hotel Colosseo",
+    "departure": "15 травня 2026"
+  },
+  {
+    "id": "BV-9910",
+    "title": "Прага, Чехія",
+    "price": 350,
+    "img": "images/Prague.webp",
+    "hotel": "Charles Bridge Palace",
+    "departure": "18 травня 2026"
+  },
+  {
+    "id": "BV-5566",
+    "title": "Токіо, Японія",
+    "price": 1200,
+    "img": "images/Tokyo.webp",
+    "hotel": "Shibuya Sky View",
+    "departure": "05 червня 2026"
+  },
+  {
+    "id": "BV-3344",
+    "title": "Барселона, Іспанія",
+    "price": 480,
+    "img": "images/Barcelona.webp",
+    "hotel": "Sagrada Familia Inn",
+    "departure": "22 травня 2026"
+  },
+  {
+    "id": "BV-7788",
+    "title": "Дубай, ОАЕ",
+    "price": 850,
+    "img": "images/Dubai.webp",
+    "hotel": "Burj Al Arab Resort",
+    "departure": "10 червня 2026"
+  },
+  {
+    "id": "BV-1819",
+    "title": "Балі, Індонезія",
+    "price": 1100,
+    "img": "images/Bali.webp",
+    "hotel": "Jungle Serenity Spa",
+    "departure": "15 червня 2026"
+  },
+  {
+    "id": "BV-6677",
+    "title": "Лондон, Велика Британія",
+    "price": 750,
+    "img": "images/London.webp",
+    "hotel": "The Big Ben Residence",
+    "departure": "12 червня 2026"
+  },
+  {
+    "id": "BV-2233",
+    "title": "Афіни, Греція",
+    "price": 420,
+    "img": "images/Athens.webp",
+    "hotel": "Acropolis View Hotel",
+    "departure": "25 травня 2026"
+  },
+  {
+    "id": "BV-8899",
+    "title": "Лісабон, Португалія",
+    "price": 460,
+    "img": "images/Lisbon.webp",
+    "hotel": "Atlantic Breeze Hotel",
+    "departure": "14 червня 2026"
+  },
+  {
+    "id": "BV-1213",
+    "title": "Краків, Польща",
+    "price": 290,
+    "img": "images/Krakow.webp",
+    "hotel": "Old Town Royal Hotel",
+    "departure": "28 травня 2026"
+  },
+  {
+    "id": "BV-1415",
+    "title": "Відень, Австрія",
+    "price": 510,
+    "img": "images/Vienna.webp",
+    "hotel": "Opera Grand Central",
+    "departure": "03 червня 2026"
+  },
+  {
+    "id": "BV-2223",
+    "title": "Нью-Йорк, США",
+    "price": 1350,
+    "img": "images/New-York.webp",
+    "hotel": "Empire State Luxury",
+    "departure": "01 липня 2026"
+  },
+  {
+    "id": "BV-2021",
+    "title": "Берлін, Німеччина",
+    "price": 430,
+    "img": "images/Berlin.webp",
+    "hotel": "Alexanderplatz Suites",
+    "departure": "22 червня 2026"
+  },
+  {
+    "id": "BV-4455",
+    "title": "Амстердам, Нідерланди",
+    "price": 590,
+    "img": "images/Amsterdam.webp",
+    "hotel": "Canal Side Suites",
+    "departure": "01 червня 2026"
+  },
+  {
+    "id": "BV-3031",
+    "title": "Будапешт, Угорщина",
+    "price": 320,
+    "img": "images/Budapest.webp",
+    "hotel": "Danube Pearl Hotel",
+    "departure": "17 травня 2026"
+  }
+];
+
+export async function seedTours() {
+  for (const tour of tours) {
+    await setDoc(doc(collection(db, 'tours'), tour.id), tour);
+  }
+  console.log('Тури завантажено в Firestore!');
+}
