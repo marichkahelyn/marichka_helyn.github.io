@@ -16,7 +16,6 @@ function App() {
   const [bookedIds, setBookedIds] = useState([]);
   const [user, setUser] = useState(null);
 
-  // Відстежуємо стан автентифікації
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -24,7 +23,6 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  // Завантажуємо тури з Firestore
   useEffect(() => {
     const fetchTours = async () => {
       const snapshot = await getDocs(collection(db, 'tours'));
