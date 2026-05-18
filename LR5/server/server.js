@@ -12,7 +12,6 @@ const prisma = new PrismaClient();
 app.use(cors());
 app.use(express.json());
 
-// Роздача зібраного фронтенду
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 // --- AUTH MIDDLEWARE ---
